@@ -346,15 +346,15 @@ def write_file(calculated_points):
     # Print inputs and outputs to a text file
     output_txt_file = output_file + '.txt'
     if direction == 1:
-        direction_str = 'Right'
+        direction_str = 'To Right'
     else:
-        direction_str = 'Left'
+        direction_str = 'To Left'
     if mode == 1:
         mode_str = 'Photo'
     else:
         mode_str = 'Video'
     if contour == 1:
-        contour_str = 'Contour'
+        contour_str = 'Follow Contour'
     else:
         contour_str = 'Constant Altitude'
     if north == 1:

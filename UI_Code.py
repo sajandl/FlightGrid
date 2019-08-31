@@ -36,7 +36,7 @@ class GridInputUI:
         self.len_h = int(self.len_h_entry.get())
         self.overlap = int(self.overlap_entry.get())
         self.sample = int(self.overlap_entry.get())
-        if self.direction_str.get() == 'Right':
+        if self.direction_str.get() == 'To Right':
             self.direction = 1
         else:
             self.direction = -1
@@ -44,7 +44,7 @@ class GridInputUI:
             self.mode = 1
         else:
             self.mode = 0
-        if self.contour_str.get() == 'Contour':
+        if self.contour_str.get() == 'Follow Contour':
             self.contour = 1
         else:
             self.contour = 0
@@ -77,21 +77,21 @@ class GridInputUI:
         self.lon_lbl = tk.Label(self.master, text='Longitude Start/Home')
         self.alt_lbl = tk.Label(
             self.master,
-            text='Altitude above home position'
+            text='Altitude above home position (ft)'
         )
         self.head_lbl = tk.Label(
             self.master,
             text='Initial Heading (North=0)'
         )
         self.len_p_lbl = tk.Label(self.master,
-                                  text='Length perpendicular to Heading')
+                                  text='Length perpendicular to Heading (ft)')
         self.len_h_lbl = tk.Label(
             self.master,
-            text='Length in direction of Heading'
+            text='Length in direction of Heading (ft)'
         )
         self.overlap_lbl = tk.Label(self.master, text='Overlap Percent')
-        self.sample_lbl = tk.Label(self.master, text='Contour Samples')
-        self.direction_lbl = tk.Label(self.master, text='Column Direction')
+        self.sample_lbl = tk.Label(self.master, text='# Contour Samples btw Points')
+        self.direction_lbl = tk.Label(self.master, text='Column Direction w/r Heading')
         self.mode_lbl = tk.Label(self.master, text='Mode Selection')
         self.contour_lbl = tk.Label(self.master, text='Elevation Mode')
         self.north_lbl = tk.Label(self.master, text='True or Magnetic North')
@@ -134,12 +134,12 @@ class GridInputUI:
         self.overlap_entry = tk.Entry(self.master)
         self.sample_entry = tk.Entry(self.master)
         self.direction_str = tk.StringVar(self.master)
-        self.direction_str.set('Right')
+        self.direction_str.set('To Right')
         self.direction_opmenu = tk.OptionMenu(
             self.master,
             self.direction_str,
-            'Right',
-            'Left'
+            'To Right',
+            'To Left'
         )
         self.mode_str = tk.StringVar(self.master)
         self.mode_str.set('Photo')
@@ -150,11 +150,11 @@ class GridInputUI:
             'Video'
         )
         self.contour_str = tk.StringVar(self.master)
-        self.contour_str.set('Contour')
+        self.contour_str.set('Follow Contour')
         self.contour_opmenu = tk.OptionMenu(
             self.master,
             self.contour_str,
-            'Contour',
+            'Follow Contour',
             'Constant'
         )
         self.north_str = tk.StringVar(self.master)
@@ -291,13 +291,13 @@ class GridInputUI:
         a_overlap_p = self.calced_points[15]
         lat = self.calced_points[17]
         lon = self.calced_points[18]
-        lat_b2 = self.calced_points[20]
-        lon_b2 = self.calced_points[21]
-        lat_b3 = self.calced_points[22]
-        lon_b3 = self.calced_points[23]
-        lat_b4 = self.calced_points[24]
-        lon_b4 = self.calced_points[25]
-        route_length_f = self.calced_points[26]
+        lat_b2 = self.calced_points[22]
+        lon_b2 = self.calced_points[23]
+        lat_b3 = self.calced_points[24]
+        lon_b3 = self.calced_points[25]
+        lat_b4 = self.calced_points[26]
+        lon_b4 = self.calced_points[27]
+        route_length_f = self.calced_points[28]
 
         area = round(length_p * length_h / 43560, 1)
         route_length = round(route_length_f / 5280, 1)
